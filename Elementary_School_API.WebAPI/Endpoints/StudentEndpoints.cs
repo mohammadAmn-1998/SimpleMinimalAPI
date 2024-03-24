@@ -4,9 +4,11 @@ using Elementary_School_API.Domain.Entities;
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Elementary_School_API.WebAPI.Endpoints
 {
+	
 	public static class StudentEndpoints
 	{
 

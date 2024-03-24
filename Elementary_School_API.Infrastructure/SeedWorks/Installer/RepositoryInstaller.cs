@@ -17,6 +17,7 @@ namespace Elementary_School_API.Infrastructure.SeedWorks.Installer
 
 			services.AddScoped<IStudentRepository,StudentRepository>();
 			services.AddScoped<IScoreRepository, ScoreRepository>();
+			services.AddScoped<IUserRepository, UserRepository>();
 
 
 		}

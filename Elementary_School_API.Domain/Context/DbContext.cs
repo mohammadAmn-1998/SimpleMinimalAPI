@@ -20,12 +20,13 @@ namespace Elementary_School_API.Domain.Context
 
 		public DbSet<Student> Students { get; set; }
 		public DbSet<Score> Scores { get; set; }
-
+		public DbSet<User> Users { get; set; }
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
 			modelBuilder.Entity<Student>().HasQueryFilter(s => !s.IsDeleted);
 			modelBuilder.Entity<Score>().HasQueryFilter(s => !s.IsDeleted);
+			modelBuilder.Entity<User>().HasQueryFilter(s => !s.IsDeleted);
 
 			base.OnModelCreating(modelBuilder);
 		}

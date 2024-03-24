@@ -19,6 +19,7 @@ namespace Elementary_School_API.BLL.Services.SeedWorks.Installer
 
 			services.AddScoped<IStudentService, StudentService>();
 			services.AddScoped<IScoreService, ScoreService>();
+			services.AddScoped<IUserService, UserService>();
 			services.AddScoped<IStudentMapper, StudentMapper>();
 			services.AddScoped<IScoreMapper, ScoreMapper>();
 

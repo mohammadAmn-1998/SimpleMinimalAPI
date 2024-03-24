@@ -15,7 +15,7 @@ namespace Elementary_School_API.Infrastructure.Repositories.Impeliments
 	{
 		private readonly AppDbContext _appDbContext;
 
-		public StudentRepository(AppDbContext context, AppDbContext appDbContext) : base(context)
+		public StudentRepository( AppDbContext appDbContext) : base(appDbContext)
 		{
 			_appDbContext = appDbContext;
 		}

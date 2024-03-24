@@ -14,7 +14,7 @@ namespace Elementary_School_API.BLL.Helpers
 	{
 
 
-		public static string? GenerateJwtIdentityToken(IConfiguration configuration,string userName)
+		public static string GenerateJwtIdentityToken(IConfiguration configuration,string userName)
 		{
 
 			var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWT:Key"]!));

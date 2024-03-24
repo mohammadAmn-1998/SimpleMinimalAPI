@@ -16,7 +16,7 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace Elementary_School_API.WebAPI.RouteGroups
 {
-	[Authorize]
+	
 	public static class MyGroups
 	{
 

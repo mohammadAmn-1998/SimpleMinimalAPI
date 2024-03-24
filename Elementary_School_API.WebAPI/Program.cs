@@ -3,6 +3,7 @@ using System.Text;
 using Elementary_School_API.BLL.Services.SeedWorks.Installer;
 using Elementary_School_API.Domain.Context;
 using Elementary_School_API.Infrastructure.SeedWorks.Installer;
+using Elementary_School_API.WebAPI.ExceptionHandlers;
 using Elementary_School_API.WebAPI.RouteGroups;
 using FluentValidation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -24,6 +25,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 builder.Services.AddValidatorsFromAssemblyContaining<Program>();
 
+builder.Services.AddExceptionHandler<DefaultExceptionHandler>();
+
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 	.AddJwtBearer(options =>
 	{
@@ -41,13 +44,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 		};
 	});
-builder.Services.AddAuthorization(options =>
-{
-	options.AddPolicy("JWTBearerPolicy", policy =>
-	{
-		policy.RequireAuthenticatedUser();
-	});
-});
+builder.Services.AddAuthorization();
 builder.Services.AddRepositories();
 builder.Services.AddCustomServices();
 
@@ -62,13 +59,20 @@ if (app.Environment.IsDevelopment())
 }
 app.UseHttpsRedirection();
 
+app.UseExceptionHandler(options=> {});
+
+app.MapGroup("/Students").GroupStudents().RequireAuthorization();
+app.MapGroup("/Users").GroupUsers();
+
+
+
 app.UseAuthentication();
 app.UseAuthorization();
 
 
 
-app.MapGroup("/Students").GroupStudents().RequireAuthorization();
-app.MapGroup("/Users").GroupUsers(); 
+
+
 
 app.Run();
 
